@@ -1,5 +1,7 @@
 name: 'test project'
-on: push
+on:
+  push:
+    branches: [ main ]
 jobs:
   test-job:
     runs-on: ubuntu-latest
@@ -11,5 +13,8 @@ jobs:
           node-veesion: '14.x'
       - name: 'install'
         run: npm i
-      - name: 'test'
-        run: npm run test
+      uses: paambaati/codeclimate-action@v2.7.5
+        env:
+          CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
+        with:
+          coverageCommand: npm run test-coverage
