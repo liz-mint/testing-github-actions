@@ -28,7 +28,13 @@ describe('testing function slice()', () => {
       end: -2,
       expected: [3, 4]
     },
-        {
+    {
+      coll: arr,
+      begin: -9,
+      end: undefined,
+      expected: arr
+    },
+    {
       coll: [],
       begin: 1,
       end: 2,
